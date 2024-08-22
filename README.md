@@ -18,7 +18,7 @@ Clone this repository to your local machine:
 ```bash
 git clone https://github.com/your-username/searx-docker.git
 cd searx-docker
-
+'''
 ###2. Customize Configuration (Optional)
 
 The docker-compose.yaml file is pre-configured to run Searx with sensible defaults. However, you can customize the settings according to your needs. For example, you can modify the SEARXNG_BASE_URL environment variable to reflect your domain.
