@@ -17,7 +17,7 @@ Clone this repository to your local machine:
 
 ```bash
 git clone https://github.com/MrDark-X/searxng.git
-cd searx-docker
+cd searxng
 ```
 
 ### 2. Customize Configuration (Optional)
