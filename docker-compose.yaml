@@ -1,30 +1,23 @@
-version: "3.7"
+version: "3.8"
 
 services:
   searxng:
     container_name: searxng
-    image: searxng/searxng:latest
-    networks:
-      - searxng
+    image: docker.io/searxng/searxng:latest
+    restart: unless-stopped
     ports:
-      - "0.0.0.0:8080:8080"
+      - "8080:8080"
     volumes:
-      - ./searxng:/etc/searxng:rw
-    environment:
-      - SEARXNG_BASE_URL=https://${SEARXNG_HOSTNAME:-localhost}/
-    cap_drop:
-      - ALL
-    cap_add:
-      - CHOWN
-      - SETGID
-      - SETUID
+      - ./config:/etc/searxng
+      - ./data:/var/cache/searxng
     logging:
       driver: "json-file"
       options:
-        max-size: "1m"
-        max-file: "1"
+        max-size: "10m"
+        max-file: "5"
+    networks:
+      - searxng_net
 
 networks:
-  searxng:
-    ipam:
-      driver: default
+  searxng_net:
+    driver: bridge
